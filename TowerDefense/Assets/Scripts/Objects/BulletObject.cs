@@ -8,7 +8,6 @@ namespace Objects
     {
         private ParticleObjects _explosionPrefab = default;
         [SerializeField] private BulletConfig _bulletConfig = default;
-        public BulletConfig BulletConfig => _bulletConfig;
 
         internal void Init(ParticleObjects particle)
         {
@@ -16,7 +15,7 @@ namespace Objects
             _explosionPrefab.StopParticle();
         }
 
-        internal void Print()
+        internal void CollisionWithEnemy()
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, _bulletConfig.Radius);
             foreach (var collider in colliders)

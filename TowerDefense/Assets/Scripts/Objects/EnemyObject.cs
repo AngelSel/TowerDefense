@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using GameObjectsConfigs;
+using Managers;
 using Pool;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,7 +47,6 @@ namespace Objects
                 DOTween.Kill(transform);
                 currentHealth = _enemyConfig.Health;
             }
-            _scoreManager.PrintScore();
         }
         
         private void  OnTriggerEnter(Collider other)

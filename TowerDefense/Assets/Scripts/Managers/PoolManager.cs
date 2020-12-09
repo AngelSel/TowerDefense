@@ -2,59 +2,61 @@
 using Pool;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+namespace Managers
 {
-    private PoolConfig _poolConfig = default;
-
-    public PoolConfig PoolConfig
+    public class PoolManager : MonoBehaviour
     {
-        get => _poolConfig;
-        set => _poolConfig = value;
-    }
+        private PoolConfig _poolConfig = default;
 
-    public void InitGamePools()
-    {
-        for (int i = 0; i < _poolConfig.GamePoolsData.Count; i++)
+        public PoolConfig PoolConfig
         {
-            SetPool(_poolConfig.GamePoolsData[i]);
+            get => _poolConfig;
+            set => _poolConfig = value;
         }
-    }
 
-    public SimplePool<PoolItem> GetPoolWithTag(string tag)
-    {
-        SimplePool<PoolItem> pool = SimplePoolHelper.GetPool<PoolItem>(tag);
-        return pool;
-    }
+        public void InitGamePools()
+        {
+            for (int i = 0; i < _poolConfig.GamePoolsData.Count; i++)
+            {
+                SetPool(_poolConfig.GamePoolsData[i]);
+            }
+        }
 
-    public PoolItem GetItemFromPool(string tag)
-    {
-        return SimplePoolHelper.GetPool<PoolItem>(tag).Pop();
-    }
+        public SimplePool<PoolItem> GetPoolWithTag(string tag)
+        {
+            SimplePool<PoolItem> pool = SimplePoolHelper.GetPool<PoolItem>(tag);
+            return pool;
+        }
+
+        public PoolItem GetItemFromPool(string tag)
+        {
+            return SimplePoolHelper.GetPool<PoolItem>(tag).Pop();
+        }
     
 
-    public void SetPool(PoolData poolData)
-    {
-        SimplePool<PoolItem> simplePool = SimplePoolHelper.GetPool<PoolItem>(poolData.Tag);
+        public void SetPool(PoolData poolData)
+        {
+            SimplePool<PoolItem> simplePool = SimplePoolHelper.GetPool<PoolItem>(poolData.Tag);
         
-        GameObject parentObject = new GameObject("Pool_" + poolData.Tag);
-       // parentObject.transform.SetParent(transform);
+            GameObject parentObject = new GameObject("Pool_" + poolData.Tag);
 
-        simplePool.CreateFunction = (item) =>
-        {
-            PoolItem temp = Instantiate(poolData.PoolItem, parentObject.transform, true);
-            temp.PoolTag = poolData.Tag;
-            temp.gameObject.SetActive(false);
-            return temp;
-        };
+            simplePool.CreateFunction = (item) =>
+            {
+                PoolItem temp = Instantiate(poolData.PoolItem, parentObject.transform, true);
+                temp.PoolTag = poolData.Tag;
+                temp.gameObject.SetActive(false);
+                return temp;
+            };
 
-        simplePool.OnPush = (item) =>
-        {
-            item.transform.SetParent(parentObject.transform);
-            item.gameObject.SetActive(false);
-        };
-        simplePool.OnPop = (item) => { item.gameObject.SetActive(true); };
+            simplePool.OnPush = (item) =>
+            {
+                item.transform.SetParent(parentObject.transform);
+                item.gameObject.SetActive(false);
+            };
+            simplePool.OnPop = (item) => { item.gameObject.SetActive(true); };
 
-        simplePool.Populate(poolData.Count);
+            simplePool.Populate(poolData.Count);
+        }
+
     }
-
 }

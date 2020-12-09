@@ -1,34 +1,28 @@
 ﻿using System;
-using UnityEngine;
 
-
-public class ScoreManager: IScoreManager
+namespace Managers
 {
-    public event  Action<int> OnScoreUpdate = delegate(int score) {  };
-    private int m_currentScore = 0;
-
-    public int CurrentScore
+    public class ScoreManager: IScoreManager
     {
-        get => m_currentScore;
-        set
+        public event  Action<int> OnScoreUpdate = delegate {  };
+        private int _currentScore = 0;
+
+        public int CurrentScore
         {
-            m_currentScore = value;
+            get => _currentScore;
+            set => _currentScore = value;
         }
-    }
 
-    public void AddScore(int score)
-    {
-        CurrentScore += score;
-        OnScoreUpdate.Invoke(m_currentScore);
-    }
+        public void AddScore(int score)
+        {
+            CurrentScore += score;
+            OnScoreUpdate.Invoke(_currentScore);
+        }
 
-    public void InitScore()
-    {
-        CurrentScore = 0;
-    }
-
-    public void PrintScore()
-    {
-        Debug.Log(CurrentScore);
+        public void InitScore()
+        {
+            CurrentScore = 0;
+            OnScoreUpdate.Invoke(_currentScore);
+        }
     }
 }

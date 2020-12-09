@@ -5,7 +5,6 @@ namespace Objects
 {
     public class FingerMove : MonoBehaviour
     {
-        private bool isActive;
         private void OnEnable()
         {
             LeanTouch.OnFingerUpdate += FingerOn;
@@ -15,17 +14,7 @@ namespace Objects
         {
             LeanTouch.OnFingerUpdate -= FingerOn;
         }
-
-        private void Start()
-        {
-            isActive= true;
-        }
-
-        internal void SetState(bool state)
-        {
-            isActive = state;
-        }
-
+        
         private void FingerOn(LeanFinger finger)
         {
             var plane = new Plane(Vector3.up, 0f);
@@ -37,8 +26,7 @@ namespace Objects
             if (finger.ScreenPosition.x > Screen.width - 15)
                 finger.ScreenPosition.x = Screen.width - 15;
             else if (finger.ScreenPosition.x < 15) finger.ScreenPosition.x = 15;
-
-            //change here for camera inject
+            
             var ray = Camera.main.ScreenPointToRay(new Vector3(finger.ScreenPosition.x, finger.ScreenPosition.y, 0f));
             float distance;
             if (plane.Raycast(ray, out distance))
