@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2dc21d55dd4cda4d8b816d427ec0bb4, type: 3}
+  m_Name: PoolsConfig
+  m_EditorClassIdentifier: 
+  _gamePoolsData:
+  - _tag: DoubleBullet
+    _poolItem: {fileID: 5489019281343954302, guid: 72ac19eab1ad90a41820768dde72903c,
+      type: 3}
+    _count: 20
+  - _tag: CoreBullet
+    _poolItem: {fileID: 4592067409245220414, guid: 2463552db6c00dd40a0abf01da230776,
+      type: 3}
+    _count: 5
+  - _tag: Bull3
+    _poolItem: {fileID: 6143604945183121577, guid: fed3080bf8c35de4d9f517b01f653273,
+      type: 3}
+    _count: 8
+  - _tag: SmallEnemy
+    _poolItem: {fileID: 459620588214557170, guid: 5cd152b534c45fc4593e90d24be7ba88,
+      type: 3}
+    _count: 10
+  - _tag: MiddleEnemy
+    _poolItem: {fileID: 5672476384772709596, guid: 71259368302044b44bbeeda61ed2e78f,
+      type: 3}
+    _count: 3
+  - _tag: BigEnemy
+    _poolItem: {fileID: 8396455145027351126, guid: d839e5171abbe4440a65c115272f82f8,
+      type: 3}
+    _count: 3
+  - _tag: SmallEnemyParticle
+    _poolItem: {fileID: 6936213788138831041, guid: 6586ff0f14125534cae2f5d8f04b7871,
+      type: 3}
+    _count: 12
+  - _tag: MiddleEnemyParticle
+    _poolItem: {fileID: 195614495715326634, guid: 90f75feabbd0f504ea394911995903cd,
+      type: 3}
+    _count: 5
+  - _tag: BigEnemyParticle
+    _poolItem: {fileID: 3587550911423531432, guid: 6636b3078b0905e489f698a11b7a6b6b,
+      type: 3}
+    _count: 5
+  - _tag: DoubleBulletParticle
+    _poolItem: {fileID: -1861211461081652028, guid: 9dcc70123b2477246ba29701483e3b7b,
+      type: 3}
+    _count: 20
+  - _tag: CoreBulletParticle
+    _poolItem: {fileID: 6618118937604431401, guid: 5cbc537826220e04592d5a41a0dd985f,
+      type: 3}
+    _count: 5
+  - _tag: Bull3Particle
+    _poolItem: {fileID: 3587550911423531432, guid: 6636b3078b0905e489f698a11b7a6b6b,
+      type: 3}
+    _count: 10
