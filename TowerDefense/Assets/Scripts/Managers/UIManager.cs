@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -6,11 +7,12 @@ namespace Managers
 {
     public class UIManager : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI _countingText = default;
         [SerializeField] private GameObject _gameOverPage = default;
         [SerializeField] private GameObject _gameStartPage = default;
         [SerializeField] private Button _replayButton = default;
         [SerializeField] private Button _fireButton = default;
-        [SerializeField] private Text _scoreText = default;
+
         public Button FireButton => _fireButton;
         public Button ReplayButton => _replayButton;
         private ScoreManager _scoreManager = default;
@@ -60,7 +62,7 @@ namespace Managers
 
         private void UpdateCurrentScore(int score)
         {
-            _scoreText.text = _scoreManager.CurrentScore.ToString();
+            _countingText.text = _scoreManager.CurrentScore.ToString();
         }
     }
 }

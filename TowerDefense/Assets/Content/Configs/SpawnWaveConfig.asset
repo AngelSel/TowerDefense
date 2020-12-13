@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: SpawnWaveConfig
   m_EditorClassIdentifier: 
   m_wavesConfig:
-  - _amountOfSmallEnemies: 2
-    _amountOfMiddleEnemies: 1
+  - _amountOfSmallEnemies: 8
+    _amountOfMiddleEnemies: 6
     _amountOfBigEnemies: 3
-    _spawnTime: 6
-    _nextWaveTime: 10
+    _spawnTime: 1
+    _nextWaveTime: 20
   - _amountOfSmallEnemies: 5
     _amountOfMiddleEnemies: 1
     _amountOfBigEnemies: 3

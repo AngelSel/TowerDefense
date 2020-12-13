@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.4
   _damage: 3
-  _radius: 0.5
+  _radius: 0.3

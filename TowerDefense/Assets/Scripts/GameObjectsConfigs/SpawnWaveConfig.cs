@@ -19,7 +19,6 @@ namespace GameObjectsConfigs
     {
         
         [SerializeField] private List<WaveStruct> m_wavesConfig = default;
-
-         public List<WaveStruct> MWavesConfig => m_wavesConfig;
+        public List<WaveStruct> MWavesConfig => m_wavesConfig;
     }
 }

@@ -32,7 +32,6 @@ namespace Objects
         public void InitSpawner(WaveStruct wave)
         {
             _currentWave = wave;
-
         }
 
         private IEnumerator SpawnTime()
@@ -41,8 +40,8 @@ namespace Objects
             var counter = 0;
             Vector3 position = default;
             float offset = default;
-            List<EnemyObject> enemyObjects = new List<EnemyObject>(3);
-            List<ParticleObjects> enemyParticles = new List<ParticleObjects>(3);
+            List<EnemyObject> enemyObjects = new List<EnemyObject>(4);
+            List<ParticleObjects> enemyParticles = new List<ParticleObjects>(4);
             var spawnAmount = _currentWave._amountOfBigEnemies + _currentWave._amountOfSmallEnemies +
                               _currentWave._amountOfMiddleEnemies;
             while (true)
@@ -69,12 +68,13 @@ namespace Objects
                     PoolItem smallParticle = default;
                     enemyObjects.Clear();
                     enemyParticles.Clear();
-                    for (var i = 0; i < 2; i++)
+                    for (var i = 0; i < 3; i++)
                     {
                         smallEnemy = OnGetItemFromPool.Invoke("SmallEnemy");
                         smallEnemy.gameObject.SetActive(false);
                         enemyObjects.Add(smallEnemy as EnemyObject);
                         smallParticle = OnGetItemFromPool.Invoke("SmallEnemyParticle");
+                        (smallParticle as ParticleObjects)?.StopParticle();
                         enemyParticles.Add(smallParticle as ParticleObjects);
                     }
                 }
@@ -82,25 +82,15 @@ namespace Objects
                 position = transform.position;
                 offset = Random.Range(-0.3f, 0.3f);
                 position.x += offset;
-                position.y -= offset;
+                position.z -= offset;
                 
-                if (item != null && item.PoolTag.Equals("BigEnemy"))
-                {
-                    for (var i = 0; i < 2; i++)
-                    {
-                        enemyObjects[i].Init(_scoreManager,enemyParticles[i]);
-                    }
-
-                    (item as CompositeEnemy)?.Init(enemyObjects,_scoreManager,particleItem as ParticleObjects);
-                    item.transform.position = position;
-                    (item as CompositeEnemy)?.Recreate(position);
-                }
+                if (item.PoolTag.Equals("BigEnemy"))
+                    (item as CompositeEnemy)?.Init(enemyObjects,enemyParticles,_scoreManager,particleItem as ParticleObjects);
                 else
-                {
                     (item as EnemyObject)?.Init(_scoreManager, particleItem as ParticleObjects);
-                    item.transform.position = position;
-                    (item as EnemyObject)?.Recreate(position);
-                }
+                
+                item.transform.position = position;
+                (item as EnemyObject)?.Recreate(position,false);
 
                 counter++;
             

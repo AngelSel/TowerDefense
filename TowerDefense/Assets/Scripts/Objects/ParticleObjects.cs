@@ -7,13 +7,13 @@ namespace Objects
     public class ParticleObjects : PoolItem
     {
         [SerializeField] private ParticleSystem _thisParticle = default;
-        public ParticleSystem ThisParticle => _thisParticle;
         private Coroutine _coroutine = default;
 
         internal void PlayParticle()
         {
             _thisParticle.Play();
-            _coroutine = StartCoroutine(Returning());
+            if(transform.gameObject.activeInHierarchy)
+                _coroutine = StartCoroutine(Returning());
         }
 
         internal void StopParticle()
@@ -26,6 +26,5 @@ namespace Objects
             yield return new WaitForSeconds(_thisParticle.main.duration);
             ReturnToPool();
         }
-
     }
 }

@@ -421,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733594871}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0.06, y: 6, z: -3.72}
+  m_LocalPosition: {x: 0.06, y: 7, z: -3.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -623,6 +623,18 @@ MonoBehaviour:
   _levelManager: {fileID: 4999468702297955088, guid: 53c868132c9a46741b57ab03734da984,
     type: 3}
   _uiManager: {fileID: 2126423313}
+--- !u!114 &1772978871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+    type: 3}
+  m_PrefabInstance: {fileID: 8033967304277235984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1941846362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4992384789357136757, guid: 3876d9d5811886743a649cdfba78665a,
@@ -633,18 +645,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1948190994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3796934151724223072, guid: 340b701b6fea5cb40a51abc967f66277,
-    type: 3}
-  m_PrefabInstance: {fileID: 8033967304277235984}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1973332583 stripped
@@ -722,7 +722,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 733594873}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -767,11 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab65d24041cd384ebe7e939bd5e2dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _countingText: {fileID: 1772978871}
   _gameOverPage: {fileID: 1635053280}
   _gameStartPage: {fileID: 1973332583}
   _replayButton: {fileID: 1941846362}
   _fireButton: {fileID: 1541459449}
-  _scoreText: {fileID: 1948190994}
 --- !u!1001 &4356872815877505410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1114,10 +1114,60 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2126423312}
     m_Modifications:
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506323, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934150346506324, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 232.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3796934150346506325, guid: 340b701b6fea5cb40a51abc967f66277,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3796934150425765499, guid: 340b701b6fea5cb40a51abc967f66277,
         type: 3}
@@ -1128,6 +1178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934151724223007, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3796934151724223072, guid: 340b701b6fea5cb40a51abc967f66277,
         type: 3}
@@ -1159,6 +1214,16 @@ PrefabInstance:
       propertyPath: m_FontData.m_BestFit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3796934151724223072, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796934151724223072, guid: 340b701b6fea5cb40a51abc967f66277,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3796934151724223073, guid: 340b701b6fea5cb40a51abc967f66277,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1172,7 +1237,7 @@ PrefabInstance:
     - target: {fileID: 3796934151724223074, guid: 340b701b6fea5cb40a51abc967f66277,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8033967305291003059, guid: 340b701b6fea5cb40a51abc967f66277,
         type: 3}

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d00ff5e1e9418642a18457eb6749594, type: 3}
   m_Name: DoubleBarrel
   m_EditorClassIdentifier: 
-  fireRate: 0.1
+  fireRate: 0.15

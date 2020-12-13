@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafd2a61ac5c9b49b11be296105d150, type: 3}
   m_Name: EnemyBig
   m_EditorClassIdentifier: 
-  speed: 10
-  health: 10
+  health: 20
+  jumpHeight: 0.2
+  jumpAmount: 30
+  duration: 55

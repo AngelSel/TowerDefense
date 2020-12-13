@@ -1,81 +1,50 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
-using GameObjectsConfigs;
 using Managers;
-using Pool;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Objects
 {
-    public class CompositeEnemy : PoolItem
+    public class CompositeEnemy : EnemyObject
     {
-        [SerializeField] internal EnemyConfig _enemyConfig = default;
-        [SerializeField] private Slider _healthBar = default;
-
-        private int _currentHealth = default;
-        private ScoreManager _scoreManager = default;
-        private ParticleObjects _currentParticles = default;
-        
         private List<EnemyObject> _compositeEnemies = default;
+        private List<ParticleObjects> _compositeParticles = default;
 
-
-        internal void Init(List<EnemyObject> enemyObjects,ScoreManager scoreManager,ParticleObjects particleObjects)
+        internal void Init(List<EnemyObject> enemyObjects, List<ParticleObjects> compositeParticles, ScoreManager scoreManager, ParticleObjects particleObjects)
         {
+            base.scoreManager = scoreManager;
             _compositeEnemies = enemyObjects;
-            foreach (var enemy in _compositeEnemies) enemy.gameObject.SetActive(false);
-            _scoreManager = scoreManager;
-            _currentParticles = particleObjects;
-        }
-        
-        internal void Recreate(Vector3 pos)
-        {
-            _currentHealth = _enemyConfig.Health;
-            pos.z = pos.z - 12f; 
-            transform.DOJump(pos, 0.2f, 20, 25f).OnComplete(ReturnToPool);
-            _healthBar.value = (float)_currentHealth / _enemyConfig.Health;
-            _currentParticles.StopParticle();
-        }
-        
-        internal void GetDamage(int damage)
-        {
-            _scoreManager.AddScore(damage);
-            _currentHealth -= damage;
-            _healthBar.value = (float)_currentHealth / _enemyConfig.Health;
-            
-            if (_currentHealth < 1)
+            _compositeParticles = compositeParticles;
+            for (var i = 0; i < 3; i++)
             {
-                _currentParticles.transform.position = transform.position;
-                _currentParticles.PlayParticle();
-                Vector3 pos = transform.position;
-                pos.z = pos.z - 5f;
-                pos.y = 0.1f;
-                int num = 10;
+                enemyObjects[i].Init(base.scoreManager,compositeParticles[i]);
+            }
+            foreach (var enemy in _compositeEnemies) enemy.gameObject.SetActive(false);
+            currentParticles = particleObjects;
+        }
+        
+        internal override void GetDamage(int damage)
+        {
+            scoreManager.AddScore(damage);
+            currentHealth -= damage;
+            _healthBar.value = (float) currentHealth / _enemyConfig.Health;
+
+            if (currentHealth < 1)
+            {
+                var position = transform.position;
+                currentParticles.transform.position = position;
+                currentParticles.PlayParticle();
+                
                 foreach (var enemy in _compositeEnemies)
                 {
                     enemy.gameObject.SetActive(true);
-                    enemy.transform.position = transform.position;
-                    pos.x = pos.x - 1f;
-
-                    num = num + 3;
-                    //enemy.transform.DOJump(pos, 0.2f, num, 25f).OnComplete(ReturnToPool);
-                    enemy.Recreate(pos);
-                    
+                    enemy.transform.position = position;
+                    enemy.Recreate(position,true);
                 }
-                
+
                 ReturnToPool();
-                
+
                 DOTween.Kill(transform);
-                _currentHealth = _enemyConfig.Health;
-            }
-        }
-        
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("GameOverLine"))
-            {
-                ReturnToPool();
-                DOTween.Kill(transform);
+                currentHealth = _enemyConfig.Health;
             }
         }
     }
