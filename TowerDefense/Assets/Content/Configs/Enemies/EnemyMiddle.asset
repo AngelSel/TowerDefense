@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafd2a61ac5c9b49b11be296105d150, type: 3}
   m_Name: EnemyMiddle
   m_EditorClassIdentifier: 
-  health: 10
+  health: 15
   jumpHeight: 0.25
   jumpAmount: 25
   duration: 50

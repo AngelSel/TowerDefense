@@ -16,7 +16,6 @@ namespace Objects
         [SerializeField] private Transform _aimTarget = default;
         
         private float _nextShotTime = default;
-
         private bool _isActive = false;
 
         public bool IsActive

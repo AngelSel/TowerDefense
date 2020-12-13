@@ -12,15 +12,20 @@ namespace Objects
     public class EnemySpawn : MonoBehaviour
     {
         public event Func<string,PoolItem> OnGetItemFromPool = null;
-        public event Action<bool> OnSpawnEnd = null; 
-
+        public event Action<bool> OnSpawnEnd = null;
+        
         private WaveStruct _currentWave = default;
         private Coroutine _coroutine = default;
         private ScoreManager _scoreManager = default;
+        private float _spawnTime = default;
 
         public void Starting()
         {
-            if (_coroutine == null) _coroutine = StartCoroutine(SpawnTime());
+            if (_coroutine == null)
+            {
+                _coroutine = StartCoroutine(SpawnTime());
+            }
+
         }
 
         internal void InitScore(ScoreManager scoreManager)
@@ -32,11 +37,11 @@ namespace Objects
         public void InitSpawner(WaveStruct wave)
         {
             _currentWave = wave;
-        }
+ }
 
         private IEnumerator SpawnTime()
         {
-            var waiter = new WaitForSeconds(_currentWave._spawnTime);
+            var waiter = new WaitForSeconds(_currentWave.smallSpawnTime);
             var counter = 0;
             Vector3 position = default;
             float offset = default;
@@ -64,6 +69,8 @@ namespace Objects
                 {
                     item = OnGetItemFromPool.Invoke("BigEnemy");
                     particleItem = OnGetItemFromPool.Invoke("BigEnemyParticle");
+                    _spawnTime = _currentWave._bigSpawnTime;
+                    
                     PoolItem smallEnemy = default;
                     PoolItem smallParticle = default;
                     enemyObjects.Clear();
@@ -100,6 +107,11 @@ namespace Objects
                     OnSpawnEnd.Invoke(true);
                     yield break;
                 }
+                
+                if(_currentWave._amountOfSmallEnemies == counter)
+                    waiter = new WaitForSeconds(_currentWave.middleSpawnTime);
+                else if(spawnAmount - _currentWave._amountOfBigEnemies == counter)
+                    waiter = new WaitForSeconds(_currentWave._bigSpawnTime);
             }
         }
 

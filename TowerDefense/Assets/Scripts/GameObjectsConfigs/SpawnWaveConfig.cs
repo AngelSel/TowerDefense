@@ -8,9 +8,11 @@ namespace GameObjectsConfigs
     public struct WaveStruct
     {
         public int _amountOfSmallEnemies;
+        public float smallSpawnTime;
         public int _amountOfMiddleEnemies;
+        public float middleSpawnTime;
         public int _amountOfBigEnemies;
-        public float _spawnTime;
+        public float _bigSpawnTime;
         public float _nextWaveTime;
     }
     
