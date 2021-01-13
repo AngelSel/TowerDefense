@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Pool;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace Objects
         {
             _thisParticle.Play();
             if(transform.gameObject.activeInHierarchy)
-                _coroutine = StartCoroutine(Returning());
+                 _coroutine = StartCoroutine(Returning());
         }
 
         internal void StopParticle()

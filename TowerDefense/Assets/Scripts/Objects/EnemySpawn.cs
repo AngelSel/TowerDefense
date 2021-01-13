@@ -37,7 +37,7 @@ namespace Objects
         public void InitSpawner(WaveStruct wave)
         {
             _currentWave = wave;
- }
+        }
 
         private IEnumerator SpawnTime()
         {
