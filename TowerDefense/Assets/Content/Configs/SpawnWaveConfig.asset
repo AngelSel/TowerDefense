@@ -19,11 +19,11 @@ MonoBehaviour:
     middleSpawnTime: 1.5
     _amountOfBigEnemies: 3
     _bigSpawnTime: 3.5
-    _nextWaveTime: 10
+    _nextWaveTime: 15
   - _amountOfSmallEnemies: 20
     smallSpawnTime: 0.5
     _amountOfMiddleEnemies: 10
     middleSpawnTime: 1.5
     _amountOfBigEnemies: 5
     _bigSpawnTime: 3.5
-    _nextWaveTime: 10
+    _nextWaveTime: 15

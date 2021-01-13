@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6539517531415368493}
   - component: {fileID: 6143604945183121577}
   - component: {fileID: 5998180024857399270}
+  - component: {fileID: 2409745583860234481}
   - component: {fileID: 4717338708922312052}
   - component: {fileID: 7387476697180603950}
   m_Layer: 0
@@ -97,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletConfig: {fileID: 11400000, guid: 8308fafbed874e54eacfcb5d787818bc, type: 2}
+  _rbBullet: {fileID: 2409745583860234481}
 --- !u!136 &5998180024857399270
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -107,10 +109,26 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.03
+  m_Radius: 0.8
   m_Height: 1.03
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2409745583860234481
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2984629561532492853}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!198 &4717338708922312052
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -119,7 +137,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2984629561532492853}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0

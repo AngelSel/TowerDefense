@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2e434b29733cd4cbe700b5d5a1d7bf, type: 3}
   m_Name: Bull3
   m_EditorClassIdentifier: 
-  _speed: 0.6
-  _damage: 4
+  _speed: 5
+  _damage: 5
   _radius: 0.6

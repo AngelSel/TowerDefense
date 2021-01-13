@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2e434b29733cd4cbe700b5d5a1d7bf, type: 3}
   m_Name: DoubleBullet
   m_EditorClassIdentifier: 
-  _speed: 0.2
+  _speed: 11
   _damage: 1
   _radius: 0.4

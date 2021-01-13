@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Schema;
 using DG.Tweening;
 using GameObjectsConfigs;
 using Lean.Touch;
@@ -24,39 +25,39 @@ namespace Objects
             set => _isActive = value;
         }
 
-        private void OnEnable()
-        {
-            LeanTouch.OnFingerUpdate += FingerOn;
-        }
-
-        private void OnDisable()
-        {
-            LeanTouch.OnFingerUpdate -= FingerOn;
-        }
-
         public event Func<string,PoolItem> OnFiring = null;
         private void Start()
         {
             _nextShotTime = 0f;
         }
-        
-        private void FingerOn(LeanFinger finger)
+
+        private void FixedUpdate()
         {
             if (_isActive)
             {
                 _gunPrefab.LookAt(_aimTarget);
-                if (Time.time > _nextShotTime )
+                if(_gunPrefab.tag.Equals("LaserGun"))
+                {
+                    Vector3 rot = _gunPrefab.rotation.eulerAngles;
+                    rot.x = 0;
+                    _gunPrefab.rotation = Quaternion.Euler(rot);
+                }
+
+                if (Time.time > _nextShotTime)
                 {
                     var item = OnFiring.Invoke(_bulletConfig.name);
                     var particle = OnFiring.Invoke(_bulletConfig.name + "Particle");
-                    
-                    (item as BulletObject)?.Init(particle as ParticleObjects);
+
+                    (item as BulletObject)?.Init(particle as ParticleObjects, _aimTarget.position);
                     
                     item.transform.position = _gunTransform.transform.position;
-                    item.transform.DOMove(_aimTarget.position, _bulletConfig.Speed).OnComplete((item as BulletObject).CollisionWithEnemy);
+                    item.transform.rotation = _gunPrefab.rotation;
+                
+                    
                     _nextShotTime = Time.time + _gunConfig.FireRate;
-                } 
+                }
             }
         }
+
     }
 }
