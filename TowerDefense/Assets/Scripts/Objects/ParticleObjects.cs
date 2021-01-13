@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Pool;
 using UnityEngine;
 
@@ -26,5 +27,6 @@ namespace Objects
             yield return new WaitForSeconds(_thisParticle.main.duration);
             ReturnToPool();
         }
+
     }
 }
